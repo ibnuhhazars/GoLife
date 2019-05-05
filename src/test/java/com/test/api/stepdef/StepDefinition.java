@@ -14,9 +14,14 @@ public class StepDefinition extends ObjectEvent {
 		
 	}
 
-	@When(".*?call post.*? \"([^\"]*)\"$")
-	public void call(String arg1) throws Throwable {
-		callEvent(arg1);
+	@When(".*?call POST.*? \"([^\"]*)\"$")
+	public void callPOST(String arg1) throws Throwable {
+		callPOSTEvent(arg1);
+	}
+	
+	@When(".*?call GET.*? \"([^\"]*)\"$")
+	public void callGET(String arg1) throws Throwable {
+		callGETEvent(arg1);
 	}
 
 	@When(".*?request body:$")
@@ -27,6 +32,11 @@ public class StepDefinition extends ObjectEvent {
 	@Then(".*?receive status code.*? (\\d+)$")
 	public void receive_status_code(int arg1) throws Throwable {
 		receive_status_codeEvent(arg1);	
+	}
+	
+	@Then(".*?verify.*? \"([^\"]*)\" is \"([^\"]*)\"$")
+	public void verifyBody(String arg1, String arg2) throws Throwable {
+		verifyBodyEvent(arg1, arg2);
 	}
 
 	@Then("^the response should contain:$")
